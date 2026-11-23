@@ -2,453 +2,1183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#070b14">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070b14">
+<title>EIONIX — Cybersecurity Portfolio</title>
+<meta name="description" content="EIONIX — A student exploring cybersecurity, IAM, cloud security and web security.">
 
-    <title>EIONIX — Cybersecurity Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <meta name="description"
-        content="EIONIX — Exploring IAM, Cloud Security, Vulnerability Research and Web Security.">
+<style>
+:root {
+    --bg: #070b14;
+    --surface: #0c1422;
+    --surface-light: #101c2d;
+    --cyan: #55e6d0;
+    --text: #edf4ff;
+    --muted: #8d9caf;
+    --border: rgba(160,190,220,.13);
+    --mono: "DM Mono", monospace;
+    --font: "Manrope", sans-serif;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
 
-    <link rel="stylesheet" href="style.css">
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    overflow-x: hidden;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.ambient {
+    position: fixed;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    filter: blur(130px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: .12;
+}
+
+.ambient-one {
+    background: #247d91;
+    top: 5%;
+    left: -220px;
+}
+
+.ambient-two {
+    background: #55e6d0;
+    bottom: 5%;
+    right: -260px;
+    opacity: .045;
+}
+
+/* NAVIGATION */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(7,11,20,.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 18px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--cyan);
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-size: 12px;
+    color: var(--muted);
+    transition: .25s;
+}
+
+.nav-links a:hover {
+    color: var(--cyan);
+}
+
+.nav-cta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--cyan);
+    border: 1px solid rgba(85,230,208,.35);
+    padding: 10px 15px;
+    transition: .25s;
+}
+
+.nav-cta:hover {
+    background: rgba(85,230,208,.08);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 760px;
+    max-width: 1200px;
+    margin: auto;
+    padding: 170px 30px 55px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-grid {
+    position: absolute;
+    inset: 100px 0 0;
+    background-image:
+        linear-gradient(rgba(150,180,210,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(150,180,210,.035) 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom, black, transparent);
+    pointer-events: none;
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    align-items: center;
+    gap: 65px;
+    position: relative;
+    z-index: 1;
+}
+
+.eyebrow, .mono, .section-index, .small-accent,
+.card-category, .panel-label, .visual-label {
+    font-family: var(--mono);
+    letter-spacing: 1.4px;
+    font-size: 10px;
+}
+
+.eyebrow {
+    color: var(--cyan);
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 27px;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan);
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.12;
+    letter-spacing: -4px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--cyan);
+}
+
+.hero-description {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 14px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: .25s;
+}
+
+.button-primary {
+    background: var(--cyan);
+    color: #071411;
+}
+
+.button-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(85,230,208,.15);
+}
+
+.button-ghost {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.button-ghost:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+.hero-footnote {
+    display: flex;
+    gap: 20px;
+    margin-top: 55px;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.hero-footnote .mono {
+    color: var(--cyan);
+}
+
+/* HERO VISUAL */
+
+.hero-visual {
+    background: linear-gradient(145deg, #101d2c, #0a111e);
+    border: 1px solid var(--border);
+    padding: 24px;
+    position: relative;
+}
+
+.visual-top, .visual-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.visual-top {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.orbit {
+    width: 280px;
+    height: 280px;
+    max-width: 100%;
+    margin: 40px auto;
+    position: relative;
+    display: grid;
+    place-items: center;
+}
+
+.orbit-ring {
+    position: absolute;
+    border: 1px solid rgba(85,230,208,.16);
+    border-radius: 50%;
+}
+
+.ring-one { width: 110px; height: 110px; }
+.ring-two { width: 195px; height: 195px; border-color: rgba(85,230,208,.12); }
+.ring-three { width: 275px; height: 275px; border-style: dashed; border-color: rgba(85,230,208,.1); }
+
+.orbit-center {
+    width: 75px;
+    height: 75px;
+    border: 1px solid var(--cyan);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 35px rgba(85,230,208,.1);
+}
+
+.center-symbol {
+    color: var(--cyan);
+    font-size: 27px;
+    font-weight: 800;
+}
+
+.center-caption {
+    font-family: var(--mono);
+    font-size: 7px;
+    letter-spacing: 2px;
+}
+
+.orbit-node {
+    position: absolute;
+    background: #111f2e;
+    border: 1px solid rgba(85,230,208,.28);
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 9px;
+    padding: 7px 11px;
+}
+
+.node-one { top: 12px; left: 105px; }
+.node-two { right: -3px; top: 130px; }
+.node-three { bottom: 12px; left: 100px; }
+.node-four { left: -4px; top: 130px; }
+
+.visual-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+.visual-bottom > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.visual-label {
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.visual-bottom strong {
+    font-size: 17px;
+}
+
+.active-text {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 12px !important;
+}
+
+.hero-bottom-line {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 65px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.3px;
+}
+
+/* COMMON SECTIONS */
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 115px 30px;
+}
+
+.section-index {
+    color: var(--cyan);
+    margin-bottom: 22px;
+}
+
+.section-heading h2 {
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.2;
+    letter-spacing: -2px;
+}
+
+.section-heading h2 span {
+    color: var(--muted);
+}
+
+.heading-description {
+    color: var(--muted);
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* ABOUT */
+
+.about-layout {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 90px;
+    margin-top: 65px;
+}
+
+.small-accent {
+    color: var(--cyan);
+    margin-bottom: 20px;
+}
+
+.about-main p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+    max-width: 650px;
+}
+
+.about-main .about-lead {
+    color: var(--text);
+    font-size: 21px;
+    line-height: 1.7;
+}
+
+.info-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+}
+
+.panel-label {
+    color: var(--cyan);
+    display: block;
+    margin-bottom: 25px;
+}
+
+.approach-item {
+    display: flex;
+    gap: 20px;
+    padding: 17px 0;
+    border-top: 1px solid var(--border);
+}
+
+.approach-item > span {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+.approach-item strong {
+    font-size: 14px;
+}
+
+.approach-item p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+/* INTERESTS */
+
+.interests-section {
+    max-width: none;
+    background: rgba(12,20,34,.45);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.interests-section > * {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.interest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 55px;
+}
+
+.interest-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 25px 22px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    transition: .3s;
+}
+
+.interest-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(85,230,208,.4);
+    background: #0e1a29;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 10px;
+}
+
+.card-symbol {
+    color: var(--cyan);
+    font-size: 17px;
+}
+
+.interest-icon {
+    color: var(--cyan);
+    font-size: 27px;
+    margin: 25px 0 12px;
+}
+
+.card-category {
+    color: var(--muted);
+    font-size: 8px;
+    line-height: 1.8;
+}
+
+.interest-card h3 {
+    font-size: 18px;
+    line-height: 1.4;
+    margin: 12px 0;
+}
+
+.interest-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 22px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: var(--cyan);
+}
+
+/* PROJECTS */
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 55px;
+}
+
+.project-card {
+    padding: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: .25s;
+}
+
+.project-card:hover {
+    border-color: rgba(85,230,208,.35);
+    transform: translateY(-4px);
+}
+
+.project-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.project-number {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 11px;
+}
+
+.project-status {
+    color: var(--muted);
+    border: 1px solid var(--border);
+    padding: 5px 9px;
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+.project-card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: var(--muted);
+    font-size: 13px;
+    max-width: 470px;
+}
+
+/* JOURNEY */
+
+.journey-section {
+    border-top: 1px solid var(--border);
+}
+
+.journey-layout {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 90px;
+    margin-top: 55px;
+}
+
+.journey-intro {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 340px;
+    margin-top: 18px;
+}
+
+.timeline {
+    border-left: 1px solid rgba(85,230,208,.25);
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 35px;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cyan);
+    left: -35px;
+    top: 7px;
+    box-shadow: 0 0 12px rgba(85,230,208,.5);
+}
+
+.timeline-item span {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.timeline-item h3 {
+    font-size: 17px;
+    margin: 7px 0;
+}
+
+.timeline-item p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* CONTACT */
+
+.contact-section {
+    padding: 100px 30px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(44,120,120,.12), transparent 65%);
+}
+
+.contact-inner {
+    max-width: 720px;
+    margin: auto;
+}
+
+.contact-label {
+    color: var(--cyan);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.contact-section h2 {
+    font-size: clamp(35px, 5vw, 58px);
+    line-height: 1.2;
+    letter-spacing: -2px;
+    margin: 20px 0;
+}
+
+.contact-section p {
+    color: var(--muted);
+    font-size: 14px;
+    max-width: 550px;
+    margin: 0 auto 30px;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 14px 22px;
+    color: #071411;
+    background: var(--cyan);
+    font-size: 12px;
+    font-weight: 800;
+    transition: .25s;
+}
+
+.contact-link:hover {
+    transform: translateY(-3px);
+}
+
+/* FOOTER */
+
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 30px;
+}
+
+.footer-inner {
+    max-width: 1140px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-brand strong {
+    font-size: 17px;
+    letter-spacing: -1px;
+}
+
+.footer-brand strong span {
+    color: var(--cyan);
+}
+
+.footer-brand p, .copyright {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 22px;
+}
+
+.footer-links a {
+    color: var(--muted);
+    font-size: 10px;
+    transition: .2s;
+}
+
+.footer-links a:hover {
+    color: var(--cyan);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .hero {
+        padding-top: 145px;
+    }
+
+    .hero-visual {
+        max-width: 500px;
+    }
+
+    .interest-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-layout, .journey-layout {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-container {
+        padding: 15px 18px;
+        flex-wrap: wrap;
+        gap: 13px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .nav-cta {
+        font-size: 8px;
+        padding: 8px;
+    }
+
+    .hero {
+        padding: 175px 20px 40px;
+        min-height: auto;
+    }
+
+    .hero h1 {
+        font-size: 47px;
+        letter-spacing: -2.5px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .hero-footnote {
+        flex-wrap: wrap;
+        margin-top: 35px;
+    }
+
+    .hero-bottom-line {
+        font-size: 7px;
+        gap: 15px;
+    }
+
+    .section {
+        padding: 80px 20px;
+    }
+
+    .interest-grid, .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .interest-card {
+        min-height: 310px;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .copyright {
+        margin-top: 5px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="ambient ambient-one"></div>
-    <div class="ambient ambient-two"></div>
+<div class="ambient ambient-one"></div>
+<div class="ambient ambient-two"></div>
 
-    <!-- NAVIGATION -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">EIONIX<span>_</span></a>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="logo">EIONIX<span>_</span></a>
 
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#interests">Interests</a>
-                <a href="#projects">Projects</a>
-                <a href="#journey">Journey</a>
-                <a href="#contact">Contact</a>
-            </div>
-
-            <a href="#contact" class="nav-cta">LET'S CONNECT ↗</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#interests">Interests</a>
+            <a href="#projects">Projects</a>
+            <a href="#journey">Journey</a>
+            <a href="#contact">Contact</a>
         </div>
-    </nav>
 
-    <main>
+        <a href="#contact" class="nav-cta">LET'S CONNECT ↗</a>
+    </div>
+</nav>
 
-        <!-- HERO -->
-        <section class="hero" id="home">
-            <div class="hero-grid"></div>
+<main>
 
-            <div class="hero-inner">
+<section class="hero" id="home">
+    <div class="hero-grid"></div>
 
-                <div class="hero-copy">
-                    <div class="eyebrow">
-                        <span class="live-dot"></span>
-                        CYBERSECURITY · LEARNING · RESEARCH
-                    </div>
-
-                    <h1>
-                        Think beyond.<br>
-                        <span>Secure</span> what's next.
-                    </h1>
-
-                    <p class="hero-description">
-                        Exploring the world of cybersecurity through
-                        Identity & Access Management, Cloud Security,
-                        Vulnerability Research and Web Security.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a href="#interests" class="button button-primary">
-                            Explore my interests <span>↗</span>
-                        </a>
-
-                        <a href="#about" class="button button-ghost">
-                            Discover EIONIX
-                        </a>
-                    </div>
-
-                    <div class="hero-footnote">
-                        <span class="mono">01 / 04</span>
-                        <span>LEARNING · EXPLORING · BUILDING</span>
-                    </div>
-                </div>
-
-                <div class="hero-visual">
-                    <div class="visual-top">
-                        <span>SECURITY OVERVIEW</span>
-                        <span class="mono">E-001</span>
-                    </div>
-
-                    <div class="orbit">
-                        <div class="orbit-ring ring-one"></div>
-                        <div class="orbit-ring ring-two"></div>
-                        <div class="orbit-ring ring-three"></div>
-
-                        <div class="orbit-center">
-                            <span class="center-symbol">E</span>
-                            <span class="center-caption">EIONIX</span>
-                        </div>
-
-                        <div class="orbit-node node-one">IAM</div>
-                        <div class="orbit-node node-two">CLOUD</div>
-                        <div class="orbit-node node-three">VULN</div>
-                        <div class="orbit-node node-four">WEB</div>
-                    </div>
-
-                    <div class="visual-bottom">
-                        <div>
-                            <span class="visual-label">FOCUS AREAS</span>
-                            <strong>04</strong>
-                        </div>
-                        <div>
-                            <span class="visual-label">CURRENT FOCUS</span>
-                            <strong class="active-text">LEARNING</strong>
-                        </div>
-                    </div>
-                </div>
-
+    <div class="hero-inner">
+        <div class="hero-copy">
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                CYBERSECURITY · LEARNING · RESEARCH
             </div>
 
-            <div class="hero-bottom-line">
-                <span>INDEPENDENT LEARNING JOURNEY</span>
-                <span>SCROLL TO EXPLORE ↓</span>
-            </div>
-        </section>
+            <h1>Think beyond.<br><span>Secure</span> what's next.</h1>
 
-        <!-- ABOUT -->
-        <section class="section about-section" id="about">
-            <div class="section-heading">
-                <div class="section-index">01 / ABOUT</div>
-                <h2>A little about<br><span>the person behind EIONIX.</span></h2>
-            </div>
+            <p class="hero-description">
+                Exploring the world of cybersecurity through
+                Identity & Access Management, Cloud Security,
+                Vulnerability Research and Web Security.
+            </p>
 
-            <div class="about-layout">
-                <div class="about-main">
-                    <div class="small-accent">HELLO, WORLD.</div>
-
-                    <p class="about-lead">
-                        I'm a student with a growing interest in
-                        understanding how technology works — and
-                        how to make it more secure.
-                    </p>
-
-                    <p>
-                        My cybersecurity journey is focused on exploring
-                        identities, cloud environments, vulnerabilities
-                        and the security of web applications.
-                    </p>
-
-                    <p>
-                        EIONIX is my personal digital space to document
-                        what I learn, experiment with new concepts and
-                        gradually build meaningful projects.
-                    </p>
-                </div>
-
-                <div class="about-side">
-                    <div class="info-panel">
-                        <span class="panel-label">MY APPROACH</span>
-
-                        <div class="approach-item">
-                            <span>01</span>
-                            <div>
-                                <strong>Understand</strong>
-                                <p>Build strong foundations.</p>
-                            </div>
-                        </div>
-
-                        <div class="approach-item">
-                            <span>02</span>
-                            <div>
-                                <strong>Experiment</strong>
-                                <p>Explore concepts through practice.</p>
-                            </div>
-                        </div>
-
-                        <div class="approach-item">
-                            <span>03</span>
-                            <div>
-                                <strong>Build</strong>
-                                <p>Turn knowledge into real projects.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- INTERESTS -->
-        <section class="section interests-section" id="interests">
-            <div class="section-heading">
-                <div class="section-index">02 / AREAS OF INTEREST</div>
-                <h2>Four directions.<br><span>One curiosity.</span></h2>
-                <p class="heading-description">
-                    The areas of cybersecurity I'm currently exploring.
-                </p>
-            </div>
-
-            <div class="interest-grid">
-
-                <article class="interest-card">
-                    <div class="card-top">
-                        <span class="card-number">01</span>
-                        <span class="card-symbol">◈</span>
-                    </div>
-                    <div class="interest-icon">⌘</div>
-                    <div class="card-category">IDENTITY · ACCESS · TRUST</div>
-                    <h3>Identity & Access<br>Management</h3>
-                    <p>
-                        Exploring digital identities, authentication,
-                        authorization, access policies and the principles
-                        that keep accounts and systems protected.
-                    </p>
-                    <div class="card-bottom">
-                        <span>IAM</span>
-                        <span>EXPLORE AREA ↗</span>
-                    </div>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-top">
-                        <span class="card-number">02</span>
-                        <span class="card-symbol">◈</span>
-                    </div>
-                    <div class="interest-icon">☁</div>
-                    <div class="card-category">INFRASTRUCTURE · CLOUD · DEFENCE</div>
-                    <h3>Cloud<br>Security</h3>
-                    <p>
-                        Understanding cloud infrastructure, secure
-                        configurations, identity permissions and
-                        protecting services in cloud environments.
-                    </p>
-                    <div class="card-bottom">
-                        <span>CLOUD</span>
-                        <span>EXPLORE AREA ↗</span>
-                    </div>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-top">
-                        <span class="card-number">03</span>
-                        <span class="card-symbol">◈</span>
-                    </div>
-                    <div class="interest-icon">⌕</div>
-                    <div class="card-category">ANALYSIS · DISCOVERY · RESEARCH</div>
-                    <h3>Vulnerability<br>Research</h3>
-                    <p>
-                        Learning how security weaknesses are identified,
-                        analyzed, understood and responsibly documented.
-                    </p>
-                    <div class="card-bottom">
-                        <span>RESEARCH</span>
-                        <span>EXPLORE AREA ↗</span>
-                    </div>
-                </article>
-
-                <article class="interest-card">
-                    <div class="card-top">
-                        <span class="card-number">04</span>
-                        <span class="card-symbol">◈</span>
-                    </div>
-                    <div class="interest-icon">⌘</div>
-                    <div class="card-category">APPLICATIONS · NETWORK · DEFENCE</div>
-                    <h3>Web<br>Security</h3>
-                    <p>
-                        Exploring web application vulnerabilities,
-                        browser security, secure development and
-                        how websites can be better protected.
-                    </p>
-                    <div class="card-bottom">
-                        <span>WEB</span>
-                        <span>EXPLORE AREA ↗</span>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section class="section projects-section" id="projects">
-            <div class="section-heading">
-                <div class="section-index">03 / PROJECTS</div>
-                <h2>Knowledge in progress.<br><span>Projects to come.</span></h2>
-                <p class="heading-description">
-                    A space for practical experiments and things I build
-                    as I continue learning.
-                </p>
-            </div>
-
-            <div class="project-grid">
-
-                <article class="project-card">
-                    <div class="project-card-top">
-                        <span class="project-number">01</span>
-                        <span class="project-type">IDENTITY & ACCESS</span>
-                    </div>
-                    <h3>IAM Learning Lab</h3>
-                    <p>Exploring digital identities, authentication, roles, permissions and access control.</p>
-                    <div class="project-card-bottom">
-                        <span>FOUNDATION PROJECT</span>
-                        <span class="project-status">PLANNED</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-card-top">
-                        <span class="project-number">02</span>
-                        <span class="project-type">CLOUD INFRASTRUCTURE</span>
-                    </div>
-                    <h3>Cloud Security Lab</h3>
-                    <p>Learning cloud fundamentals, secure configurations and identity permissions.</p>
-                    <div class="project-card-bottom">
-                        <span>FOUNDATION PROJECT</span>
-                        <span class="project-status">PLANNED</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-card-top">
-                        <span class="project-number">03</span>
-                        <span class="project-type">SECURITY RESEARCH</span>
-                    </div>
-                    <h3>Vulnerability Research</h3>
-                    <p>Building an understanding of security weaknesses and responsible documentation.</p>
-                    <div class="project-card-bottom">
-                        <span>RESEARCH PROJECT</span>
-                        <span class="project-status">PLANNED</span>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-card-top">
-                        <span class="project-number">04</span>
-                        <span class="project-type">APPLICATION SECURITY</span>
-                    </div>
-                    <h3>Web Security Labs</h3>
-                    <p>Exploring common web application risks and practical ways to improve security.</p>
-                    <div class="project-card-bottom">
-                        <span>PRACTICAL LEARNING</span>
-                        <span class="project-status">PLANNED</span>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <!-- LEARNING JOURNEY -->
-        <section class="section journey-section" id="journey">
-            <div class="section-heading">
-                <div class="section-index">04 / LEARNING JOURNEY</div>
-                <h2>Still learning.<br><span>Always moving forward.</span></h2>
-            </div>
-
-            <div class="journey-layout">
-                <div class="journey-intro">
-                    <div class="journey-badge">
-                        <span class="live-dot"></span>
-                        CURRENTLY LEARNING
-                    </div>
-
-                    <h3>Building strong<br>foundations.</h3>
-                    <p>
-                        I'm developing my knowledge step by step,
-                        combining core concepts with practical exploration.
-                    </p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <span class="timeline-dot"></span>
-                        <div>
-                            <span class="timeline-label">FOUNDATIONS</span>
-                            <h4>Cybersecurity Fundamentals</h4>
-                            <p>Networking, operating systems and core security concepts.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span class="timeline-dot"></span>
-                        <div>
-                            <span class="timeline-label">IDENTITY & INFRASTRUCTURE</span>
-                            <h4>IAM and Cloud Concepts</h4>
-                            <p>Learning how access and cloud environments are secured.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span class="timeline-dot"></span>
-                        <div>
-                            <span class="timeline-label">APPLICATION SECURITY</span>
-                            <h4>Web Security and Vulnerabilities</h4>
-                            <p>Understanding weaknesses and secure application design.</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <span class="timeline-dot"></span>
-                        <div>
-                            <span class="timeline-label">WHAT COMES NEXT</span>
-                            <h4>Hands-on Projects</h4>
-                            <p>Turning what I learn into documented practical work.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section class="contact-section" id="contact">
-            <div class="contact-glow"></div>
-
-            <div class="contact-content">
-                <div class="section-index">05 / CONNECT</div>
-                <div class="contact-kicker">STAY CONNECTED</div>
-
-                <h2>Let's build<br><span>what comes next.</span></h2>
-
-                <p>
-                    Follow my learning journey as I explore cybersecurity,
-                    document new ideas and develop practical projects.
-                </p>
-
-                <a class="button button-primary"
-                   href="https://github.com/eionix-cyber"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    View GitHub profile <span>↗</span>
+            <div class="hero-actions">
+                <a href="#interests" class="button button-primary">
+                    Explore my interests ↗
+                </a>
+                <a href="#about" class="button button-ghost">
+                    Discover EIONIX
                 </a>
             </div>
-        </section>
 
-    </main>
+            <div class="hero-footnote">
+                <span class="mono">01 / 04</span>
+                <span>LEARNING · EXPLORING · BUILDING</span>
+            </div>
+        </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+        <div class="hero-visual">
+            <div class="visual-top">
+                <span>SECURITY OVERVIEW</span>
+                <span>E-001</span>
+            </div>
+
+            <div class="orbit">
+                <div class="orbit-ring ring-one"></div>
+                <div class="orbit-ring ring-two"></div>
+                <div class="orbit-ring ring-three"></div>
+
+                <div class="orbit-center">
+                    <span class="center-symbol">E</span>
+                    <span class="center-caption">EIONIX</span>
+                </div>
+
+                <div class="orbit-node node-one">IAM</div>
+                <div class="orbit-node node-two">CLOUD</div>
+                <div class="orbit-node node-three">VULN</div>
+                <div class="orbit-node node-four">WEB</div>
+            </div>
+
+            <div class="visual-bottom">
+                <div>
+                    <span class="visual-label">FOCUS AREAS</span>
+                    <strong>04</strong>
+                </div>
+                <div>
+                    <span class="visual-label">CURRENT FOCUS</span>
+                    <strong class="active-text">LEARNING</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-bottom-line">
+        <span>INDEPENDENT LEARNING JOURNEY</span>
+        <span>SCROLL TO EXPLORE ↓</span>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <div class="section-heading">
+        <div class="section-index">01 / ABOUT</div>
+        <h2>A little about<br><span>the person behind EIONIX.</span></h2>
+    </div>
+
+    <div class="about-layout">
+        <div class="about-main">
+            <div class="small-accent">HELLO, WORLD.</div>
+
+            <p class="about-lead">
+                I'm a student with a growing interest in understanding
+                how technology works — and how to make it more secure.
+            </p>
+
+            <p>
+                My cybersecurity journey is focused on exploring
+                identities, cloud environments, vulnerabilities
+                and the security of web applications.
+            </p>
+
+            <p>
+                EIONIX is my personal digital space to document
+                what I learn, experiment with new concepts and
+                gradually build meaningful projects.
+            </p>
+        </div>
+
+        <div class="info-panel">
+            <span class="panel-label">MY APPROACH</span>
+
+            <div class="approach-item">
+                <span>01</span>
+                <div><strong>Understand</strong><p>Build strong foundations.</p></div>
+            </div>
+
+            <div class="approach-item">
+                <span>02</span>
+                <div><strong>Experiment</strong><p>Explore concepts through practice.</p></div>
+            </div>
+
+            <div class="approach-item">
+                <span>03</span>
+                <div><strong>Build</strong><p>Turn knowledge into real projects.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section interests-section" id="interests">
+    <div class="section-heading">
+        <div class="section-index">02 / AREAS OF INTEREST</div>
+        <h2>Four directions.<br><span>One curiosity.</span></h2>
+        <p class="heading-description">
+            The areas of cybersecurity I'm currently exploring.
+        </p>
+    </div>
+
+    <div class="interest-grid">
+
+        <article class="interest-card">
+            <div class="card-top"><span>01</span><span class="card-symbol">◈</span></div>
+            <div class="interest-icon">⌘</div>
+            <div class="card-category">IDENTITY · ACCESS · TRUST</div>
+            <h3>Identity & Access<br>Management</h3>
+            <p>Exploring digital identities, authentication, authorization, access policies and the principles that keep accounts and systems protected.</p>
+            <div class="card-bottom"><span>IAM</span><span>EXPLORE AREA ↗</span></div>
+        </article>
+
+        <article class="interest-card">
+            <div class="card-top"><span>02</span><span class="card-symbol">◈</span></div>
+            <div class="interest-icon">☁</div>
+            <div class="card-category">INFRASTRUCTURE · CLOUD · DEFENCE</div>
+            <h3>Cloud<br>Security</h3>
+            <p>Understanding cloud infrastructure, secure configurations, identity permissions and protecting services in cloud environments.</p>
+            <div class="card-bottom"><span>CLOUD</span><span>EXPLORE AREA ↗</span></div>
+        </article>
+
+        <article class="interest-card">
+            <div class="card-top"><span>03</span><span class="card-symbol">◈</span></div>
+            <div class="interest-icon">⌕</div>
+            <div class="card-category">ANALYSIS · DISCOVERY · SECURITY</div>
+            <h3>Vulnerability<br>Research</h3>
+            <p>Learning how security weaknesses are discovered, understood, documented and responsibly addressed.</p>
+            <div class="card-bottom"><span>RESEARCH</span><span>EXPLORE AREA ↗</span></div>
+        </article>
+
+        <article class="interest-card">
+            <div class="card-top"><span>04</span><span class="card-symbol">◈</span></div>
+            <div class="interest-icon">⌘</div>
+            <div class="card-category">APPLICATIONS · TESTING · DEFENCE</div>
+            <h3>Web<br>Security</h3>
+            <p>Exploring web application security, common vulnerabilities, secure development and ways to protect online systems.</p>
+            <div class="card-bottom"><span>WEB</span><span>EXPLORE AREA ↗</span></div>
+        </article>
+
+    </div>
+</section>
+
+<section class="section" id="projects">
+    <div class="section-heading">
+        <div class="section-index">03 / PROJECTS</div>
+        <h2>Learning through<br><span>hands-on exploration.</span></h2>
+        <p class="heading-description">
+            A collection of areas I'm planning to explore and develop.
+        </p>
+    </div>
+
+    <div class="project-grid">
+
+        <article class="project-card">
+            <div class="project-top">
+                <span class="project-number">PROJECT 01</span>
+                <span class="project-status">PLANNED</span>
+            </div>
+            <h3>IAM Learning Lab</h3>
+            <p>A beginner-friendly exploration of identity management, authentication, permissions and access control concepts.</p>
+        </article>
+
+        <article class="project-card">
+            <div class="project-top">
+                <span class="project-number">PROJECT 02</span>
+                <span class="project-status">PLANNED</span>
+            </div>
+            <h3>Cloud Security Lab</h3>
+            <p>Learning cloud security fundamentals, configurations, permissions and basic defensive practices.</p>
+        </article>
+
+        <article class="project-card">
+            <div class="project-top">
+                <span class="project-number">PROJECT 03</span>
+                <span class="project-status">PLANNED</span>
+            </div>
+            <h3>Vulnerability Research Notes</h3>
+            <p>A structured collection of learning notes about vulnerabilities, security analysis and responsible disclosure.</p>
+        </article>
+
+        <article class="project-card">
+            <div class="project-top">
+                <span class="project-number">PROJECT 04</span>
+                <span class="project-status">PLANNED</span>
+            </div>
+            <h3>Web Security Practice</h3>
+            <p>Exploring web security concepts and practicing in safe, intentionally vulnerable learning environments.</p>
+        </article>
+
+    </div>
+</section>
+
+<section class="section journey-section" id="journey">
+    <div class="section-heading">
+        <div class="section-index">04 / JOURNEY</div>
+        <h2>Building strong<br><span>foundations.</span></h2>
+    </div>
+
+    <div class="journey-layout">
+        <p class="journey-intro">
+            Every skill starts somewhere. This is a learning journey
+            focused on curiosity, consistency and understanding the
+            fundamentals before moving into more advanced topics.
+        </p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span>STEP 01</span>
+                <h3>Build the Fundamentals</h3>
+                <p>Learn networking, operating systems, programming and core security concepts.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span>STEP 02</span>
+                <h3>Explore Core Security Areas</h3>
+                <p>Develop an understanding of IAM, cloud security, web security and vulnerability research.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span>STEP 03</span>
+                <h3>Practice and Experiment</h3>
+                <p>Use guided labs and safe environments to turn theoretical knowledge into practical experience.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span>STEP 04</span>
+                <h3>Build and Document</h3>
+                <p>Create projects, document progress and keep improving over time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact">
+    <div class="contact-inner">
+        <span class="contact-label">STAY CONNECTED</span>
+        <h2>Let's build what comes next.</h2>
+        <p>
+            EIONIX is a growing learning journey. Follow along as I
+            explore cybersecurity, develop new skills and work on projects.
+        </p>
+        <a class="contact-link" href="https://github.com/eionix-cyber" target="_blank" rel="noopener noreferrer">
+            VIEW GITHUB PROFILE ↗
+        </a>
+    </div>
+</section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
         <div class="footer-brand">
-            <a href="#home" class="logo">EIONIX<span>_</span></a>
-            <p>Exploring cybersecurity through learning, research and practical work.</p>
+            <strong>EIONIX<span>_</span></strong>
+            <p>Curiosity today. Capability tomorrow.</p>
         </div>
 
         <div class="footer-links">
             <a href="#about">About</a>
             <a href="#interests">Interests</a>
             <a href="#projects">Projects</a>
-            <a href="https://github.com/eionix-cyber" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a href="#journey">Journey</a>
+            <a href="#home">Back to top ↑</a>
         </div>
 
-        <div class="footer-bottom">
-            <span class="footer-copy">© 2026 EIONIX. All rights reserved.</span>
-            <a href="#home" class="back-to-top">BACK TO TOP ↑</a>
-        </div>
-    </footer>
+        <p class="copyright">© 2026 EIONIX. A learning journey.</p>
+    </div>
+</footer>
 
 </body>
 </html>

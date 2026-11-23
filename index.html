@@ -1,359 +1,433 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070b14">
 
-    <title>EIONIX | Cybersecurity Portfolio</title>
+    <title>EIONIX — Cybersecurity Portfolio</title>
 
-    <meta
-        name="description"
-        content="EIONIX — A cybersecurity learning portfolio exploring Identity, Cloud Security, Vulnerability Research and Web Security."
-    >
+    <meta name="description"
+        content="EIONIX — Exploring IAM, Cloud Security, Vulnerability Research and Web Security.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
     <!-- NAVIGATION -->
     <nav class="navbar">
         <div class="nav-container">
-
-            <a href="#home" class="logo">
-                EIONIX<span>_</span>
-            </a>
+            <a href="#home" class="logo">EIONIX<span>_</span></a>
 
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#skills">Interests</a>
+                <a href="#interests">Interests</a>
                 <a href="#projects">Projects</a>
-                <a href="#learning">Learning</a>
+                <a href="#journey">Journey</a>
                 <a href="#contact">Contact</a>
             </div>
 
+            <a href="#contact" class="nav-cta">LET'S CONNECT ↗</a>
         </div>
     </nav>
 
 
-    <!-- HERO -->
-    <section id="home" class="hero">
+    <main>
 
-        <div class="hero-content">
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="hero-grid"></div>
 
-            <div class="terminal-label">
-                &gt; INITIALIZING EIONIX_
+            <div class="hero-inner">
+
+                <div class="hero-copy">
+                    <div class="eyebrow">
+                        <span class="live-dot"></span>
+                        PERSONAL CYBERSECURITY SPACE
+                    </div>
+
+                    <h1>
+                        Think beyond.<br>
+                        <span>Secure</span> what's next.
+                    </h1>
+
+                    <p class="hero-description">
+                        Exploring the world of cybersecurity through
+                        Identity & Access Management, Cloud Security,
+                        Vulnerability Research and Web Security.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#interests" class="button button-primary">
+                            Explore my interests <span>↗</span>
+                        </a>
+
+                        <a href="#about" class="button button-ghost">
+                            Discover EIONIX
+                        </a>
+                    </div>
+
+                    <div class="hero-footnote">
+                        <span class="mono">01 / 04</span>
+                        <span>LEARNING · EXPLORING · BUILDING</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-top">
+                        <span>SECURITY OVERVIEW</span>
+                        <span class="mono">E-001</span>
+                    </div>
+
+                    <div class="orbit">
+                        <div class="orbit-ring ring-one"></div>
+                        <div class="orbit-ring ring-two"></div>
+                        <div class="orbit-ring ring-three"></div>
+
+                        <div class="orbit-center">
+                            <span class="center-symbol">E</span>
+                            <span class="center-caption">EIONIX</span>
+                        </div>
+
+                        <div class="orbit-node node-one">IAM</div>
+                        <div class="orbit-node node-two">CLOUD</div>
+                        <div class="orbit-node node-three">VULN</div>
+                        <div class="orbit-node node-four">WEB</div>
+                    </div>
+
+                    <div class="visual-bottom">
+                        <div>
+                            <span class="visual-label">FOCUS AREAS</span>
+                            <strong>04</strong>
+                        </div>
+                        <div>
+                            <span class="visual-label">CURRENT MODE</span>
+                            <strong class="active-text">EXPLORING</strong>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <h1>
-                Exploring the
-                <span>Cybersecurity</span>
-                Frontier.
-            </h1>
+            <div class="hero-bottom-line">
+                <span>INDEPENDENT LEARNING JOURNEY</span>
+                <span>SCROLL TO EXPLORE ↓</span>
+            </div>
+        </section>
 
-            <p class="hero-description">
-                A student exploring cybersecurity through Identity & Access
-                Management, Cloud Security, Vulnerability Research and Web Security.
-            </p>
 
-            <div class="hero-buttons">
+        <!-- ABOUT -->
+        <section class="section about-section" id="about">
+            <div class="section-heading">
+                <div class="section-index">01 / ABOUT</div>
+                <h2>A little about<br><span>the person behind EIONIX.</span></h2>
+            </div>
 
-                <a href="#projects" class="btn primary">
-                    Explore My Work
+            <div class="about-layout">
+                <div class="about-main">
+                    <div class="small-accent">HELLO, WORLD.</div>
+
+                    <p class="about-lead">
+                        I'm a student with a growing interest in
+                        understanding how technology works — and
+                        how to make it more secure.
+                    </p>
+
+                    <p>
+                        My cybersecurity journey is focused on exploring
+                        identities, cloud environments, vulnerabilities
+                        and the security of web applications.
+                    </p>
+
+                    <p>
+                        EIONIX is my personal digital space to document
+                        what I learn, experiment with new concepts and
+                        gradually build meaningful projects.
+                    </p>
+                </div>
+
+                <div class="about-side">
+                    <div class="info-panel">
+                        <span class="panel-label">MY APPROACH</span>
+                        <div class="approach-item">
+                            <span>01</span>
+                            <div>
+                                <strong>Understand</strong>
+                                <p>Build strong foundations.</p>
+                            </div>
+                        </div>
+                        <div class="approach-item">
+                            <span>02</span>
+                            <div>
+                                <strong>Experiment</strong>
+                                <p>Explore concepts through practice.</p>
+                            </div>
+                        </div>
+                        <div class="approach-item">
+                            <span>03</span>
+                            <div>
+                                <strong>Build</strong>
+                                <p>Turn knowledge into real projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- INTERESTS -->
+        <section class="section interests-section" id="interests">
+            <div class="section-heading">
+                <div class="section-index">02 / AREAS OF INTEREST</div>
+                <h2>Four directions.<br><span>One curiosity.</span></h2>
+                <p class="heading-description">
+                    The areas of cybersecurity I'm currently exploring.
+                </p>
+            </div>
+
+            <div class="interest-grid">
+
+                <article class="interest-card">
+                    <div class="card-top">
+                        <span class="card-number">01</span>
+                        <span class="card-symbol">◈</span>
+                    </div>
+                    <div class="interest-icon">⌘</div>
+                    <div class="card-category">IDENTITY · ACCESS · TRUST</div>
+                    <h3>Identity & Access<br>Management</h3>
+                    <p>
+                        Exploring digital identities, authentication,
+                        authorization, access policies and the principles
+                        that keep accounts and systems protected.
+                    </p>
+                    <div class="card-bottom">
+                        <span>IAM</span>
+                        <span>EXPLORE AREA ↗</span>
+                    </div>
+                </article>
+
+                <article class="interest-card">
+                    <div class="card-top">
+                        <span class="card-number">02</span>
+                        <span class="card-symbol">◈</span>
+                    </div>
+                    <div class="interest-icon">☁</div>
+                    <div class="card-category">INFRASTRUCTURE · CLOUD · DEFENCE</div>
+                    <h3>Cloud<br>Security</h3>
+                    <p>
+                        Understanding cloud infrastructure, secure
+                        configurations, identity permissions and
+                        protecting services in cloud environments.
+                    </p>
+                    <div class="card-bottom">
+                        <span>CLOUD</span>
+                        <span>EXPLORE AREA ↗</span>
+                    </div>
+                </article>
+
+                <article class="interest-card">
+                    <div class="card-top">
+                        <span class="card-number">03</span>
+                        <span class="card-symbol">◈</span>
+                    </div>
+                    <div class="interest-icon">⌕</div>
+                    <div class="card-category">ANALYSIS · DISCOVERY · RESEARCH</div>
+                    <h3>Vulnerability<br>Research</h3>
+                    <p>
+                        Learning how security weaknesses are identified,
+                        analyzed, understood and responsibly documented.
+                    </p>
+                    <div class="card-bottom">
+                        <span>RESEARCH</span>
+                        <span>EXPLORE AREA ↗</span>
+                    </div>
+                </article>
+
+                <article class="interest-card">
+                    <div class="card-top">
+                        <span class="card-number">04</span>
+                        <span class="card-symbol">◈</span>
+                    </div>
+                    <div class="interest-icon">⌘</div>
+                    <div class="card-category">APPLICATIONS · NETWORK · DEFENCE</div>
+                    <h3>Web<br>Security</h3>
+                    <p>
+                        Exploring web application vulnerabilities,
+                        browser security, secure development and
+                        how websites can be better protected.
+                    </p>
+                    <div class="card-bottom">
+                        <span>WEB</span>
+                        <span>EXPLORE AREA ↗</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section class="section projects-section" id="projects">
+            <div class="section-heading">
+                <div class="section-index">03 / PROJECTS</div>
+                <h2>Knowledge in progress.<br><span>Projects to come.</span></h2>
+                <p class="heading-description">
+                    A space for practical experiments and things I build
+                    as I continue learning.
+                </p>
+            </div>
+
+            <div class="project-list">
+
+                <div class="project-row">
+                    <div class="project-number">01</div>
+                    <div class="project-info">
+                        <span class="project-type">IDENTITY & ACCESS</span>
+                        <h3>IAM Learning Lab</h3>
+                        <p>A planned exploration of users, roles and permissions.</p>
+                    </div>
+                    <span class="project-status">PLANNED</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-number">02</div>
+                    <div class="project-info">
+                        <span class="project-type">CLOUD INFRASTRUCTURE</span>
+                        <h3>Cloud Security Lab</h3>
+                        <p>A planned exploration of cloud security fundamentals.</p>
+                    </div>
+                    <span class="project-status">PLANNED</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-number">03</div>
+                    <div class="project-info">
+                        <span class="project-type">SECURITY RESEARCH</span>
+                        <h3>Vulnerability Research</h3>
+                        <p>A future collection of vulnerability analysis and notes.</p>
+                    </div>
+                    <span class="project-status">PLANNED</span>
+                </div>
+
+                <div class="project-row">
+                    <div class="project-number">04</div>
+                    <div class="project-info">
+                        <span class="project-type">APPLICATION SECURITY</span>
+                        <h3>Web Security Labs</h3>
+                        <p>A future collection of practical web security exercises.</p>
+                    </div>
+                    <span class="project-status">PLANNED</span>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- JOURNEY -->
+        <section class="section journey-section" id="journey">
+            <div class="section-heading">
+                <div class="section-index">04 / LEARNING JOURNEY</div>
+                <h2>Still learning.<br><span>Always moving forward.</span></h2>
+            </div>
+
+            <div class="journey-layout">
+                <div class="journey-intro">
+                    <div class="journey-badge">
+                        <span class="live-dot"></span>
+                        CURRENTLY LEARNING
+                    </div>
+                    <h3>The foundation<br>comes first.</h3>
+                    <p>
+                        I'm building my understanding step by step.
+                        No shortcuts, no pretending — just curiosity,
+                        consistent learning and practical exploration.
+                    </p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div>
+                            <span class="timeline-label">FOUNDATIONS</span>
+                            <h4>Cybersecurity Fundamentals</h4>
+                            <p>Networking, operating systems and core security concepts.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div>
+                            <span class="timeline-label">IDENTITY & INFRASTRUCTURE</span>
+                            <h4>IAM and Cloud Concepts</h4>
+                            <p>Learning how access and cloud environments are secured.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div>
+                            <span class="timeline-label">APPLICATION SECURITY</span>
+                            <h4>Web Security and Vulnerabilities</h4>
+                            <p>Understanding weaknesses and secure application design.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <span class="timeline-dot"></span>
+                        <div>
+                            <span class="timeline-label">WHAT COMES NEXT</span>
+                            <h4>Hands-on Projects</h4>
+                            <p>Turning what I learn into documented practical work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <div class="contact-glow"></div>
+
+            <div class="contact-content">
+                <div class="section-index">05 / CONNECT</div>
+                <div class="contact-kicker">THE JOURNEY IS JUST BEGINNING.</div>
+
+                <h2>Curiosity today.<br><span>Capability tomorrow.</span></h2>
+
+                <p>
+                    EIONIX is a growing learning journey.
+                    Follow along as I explore, experiment and build.
+                </p>
+
+                <a class="button button-primary"
+                   href="https://github.com/eionix-cyber"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Visit my GitHub <span>↗</span>
                 </a>
-
-                <a href="#about" class="btn secondary">
-                    About Me
-                </a>
-
             </div>
+        </section>
 
-            <div class="status">
-                <span class="status-dot"></span>
-                CYBERSECURITY LEARNING MODE: ACTIVE
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-
-        <div class="section-header">
-            <span class="section-number">01</span>
-            <h2>About Me</h2>
-        </div>
-
-        <div class="about-content">
-
-            <p>
-                I'm a student currently exploring the world of cybersecurity
-                and building my knowledge one skill at a time.
-            </p>
-
-            <p>
-                My main interests are Identity & Access Management,
-                Cloud Security, Vulnerability Research and Web Security.
-                I'm interested in understanding how modern systems work,
-                how they can be protected, and where security weaknesses
-                can appear.
-            </p>
-
-            <p>
-                EIONIX is my personal space to document what I learn,
-                experiment with security concepts and eventually showcase
-                projects I build along the way.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- INTERESTS -->
-    <section id="skills" class="section">
-
-        <div class="section-header">
-            <span class="section-number">02</span>
-            <h2>Areas I'm Exploring</h2>
-        </div>
-
-        <div class="skills-grid">
-
-            <div class="skill-card">
-
-                <div class="skill-icon">01</div>
-
-                <h3>Identity & Access Management</h3>
-
-                <p>
-                    Learning how identities, authentication, authorization,
-                    permissions and access controls protect modern systems.
-                </p>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">02</div>
-
-                <h3>Cloud Security</h3>
-
-                <p>
-                    Exploring security concepts across cloud environments,
-                    including identities, permissions, configurations and
-                    cloud infrastructure.
-                </p>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">03</div>
-
-                <h3>Vulnerability Research</h3>
-
-                <p>
-                    Learning how vulnerabilities are discovered, understood,
-                    analyzed and responsibly documented.
-                </p>
-
-            </div>
-
-
-            <div class="skill-card">
-
-                <div class="skill-icon">04</div>
-
-                <h3>Web Security</h3>
-
-                <p>
-                    Studying common web application security issues and
-                    understanding how developers can build safer applications.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-
-        <div class="section-header">
-            <span class="section-number">03</span>
-            <h2>Projects</h2>
-        </div>
-
-        <div class="terminal">
-
-            <div class="terminal-top">
-
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-                <span class="terminal-dot"></span>
-
-                <span class="terminal-title">
-                    eionix@cyber:~/projects
-                </span>
-
-            </div>
-
-            <div class="terminal-body">
-
-                <p>
-                    <span class="terminal-green">$</span>
-                    ls projects/
-                </p>
-
-                <p>
-                    <span class="terminal-blue">01</span>
-                    IAM_Learning_Lab
-                </p>
-
-                <p>
-                    <span class="terminal-blue">02</span>
-                    Cloud_Security_Lab
-                </p>
-
-                <p>
-                    <span class="terminal-blue">03</span>
-                    Vulnerability_Research
-                </p>
-
-                <p>
-                    <span class="terminal-blue">04</span>
-                    Web_Security_Labs
-                </p>
-
-                <br>
-
-                <p>
-                    <span class="terminal-green">$</span>
-                    status
-                </p>
-
-                <p class="terminal-output">
-                    Projects are currently being explored and built.
-                </p>
-
-                <p>
-                    <span class="terminal-green">$</span>
-                    _
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- LEARNING -->
-    <section id="learning" class="section">
-
-        <div class="section-header">
-            <span class="section-number">04</span>
-            <h2>Learning Journey</h2>
-        </div>
-
-        <div class="learning-card">
-
-            <div class="learning-status">
-                CURRENT STATUS
-            </div>
-
-            <h3>
-                Learning. Experimenting. Building.
-            </h3>
-
-            <p>
-                I'm currently building my cybersecurity fundamentals while
-                exploring the areas that interest me most.
-            </p>
-
-            <div class="learning-list">
-
-                <div>
-                    <span>→</span>
-                    Cybersecurity Fundamentals
-                </div>
-
-                <div>
-                    <span>→</span>
-                    Identity & Access Management
-                </div>
-
-                <div>
-                    <span>→</span>
-                    Cloud Security Fundamentals
-                </div>
-
-                <div>
-                    <span>→</span>
-                    Web Application Security
-                </div>
-
-                <div>
-                    <span>→</span>
-                    Vulnerability Research
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section id="contact" class="section contact-section">
-
-        <div class="section-header">
-            <span class="section-number">05</span>
-            <h2>Connect</h2>
-        </div>
-
-        <p>
-            EIONIX is a work in progress. As I learn more and build more,
-            this portfolio will continue to evolve.
-        </p>
-
-        <a
-            href="https://github.com/eionix-cyber"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn primary"
-        >
-            GitHub
-        </a>
-
-    </section>
+    </main>
 
 
     <!-- FOOTER -->
-    <footer>
-
-        <div>
-            EIONIX<span>_</span>
-        </div>
-
-        <p>
-            Exploring Cybersecurity, One Skill at a Time.
-        </p>
-
-        <small>
-            © 2026 EIONIX. Built while learning.
-        </small>
-
+    <footer class="footer">
+        <a href="#home" class="logo">EIONIX<span>_</span></a>
+        <p>Exploring Cybersecurity, One Skill at a Time.</p>
+        <span class="footer-copy">© 2026 EIONIX · BUILT WHILE LEARNING</span>
     </footer>
-
 
 </body>
 </html>

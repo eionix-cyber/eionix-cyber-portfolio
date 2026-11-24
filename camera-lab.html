@@ -1,1 +1,195 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EIONIX | Camera Security Lab</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080d16;
+  color: #e8edf5;
+  font-family: Arial, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+main {
+  width: min(100%, 650px);
+  background: #101a29;
+  border: 1px solid #26364b;
+  border-radius: 18px;
+  padding: 28px;
+}
+.brand { color: #42e6ad; letter-spacing: 3px; }
+h1 { margin-bottom: 8px; }
+p { color: #aab8ca; line-height: 1.6; }
+video, canvas {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #05080e;
+  border-radius: 12px;
+  margin-top: 18px;
+  object-fit: cover;
+}
+canvas { display: none; }
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+button {
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  background: #42e6ad;
+  color: #07120f;
+}
+button.secondary {
+  background: #26364b;
+  color: white;
+}
+button:disabled { opacity: .4; cursor: not-allowed; }
+#status { margin-top: 16px; color: #42e6ad; }
+.notice {
+  margin-top: 20px;
+  padding: 14px;
+  background: #172638;
+  border-radius: 10px;
+  font-size: 14px;
+}
+a { color: #42e6ad; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">EIONIX / SECURITY LAB</div>
+  <h1>Webcam Permission Tester</h1>
+  <p>
+    Learn how browser camera permissions work.
+    Your camera starts only after you press the button
+    and grant permission.
+  </p>
+
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="canvas"></canvas>
+
+  <div class="buttons">
+    <button id="start">Enable Camera</button>
+    <button id="capture" class="secondary" disabled>Capture Photo</button>
+    <button id="stop" class="secondary" disabled>Stop Camera</button>
+    <button id="retake" class="secondary" disabled>Retake</button>
+  </div>
+
+  <p id="status" role="status">Camera is currently off.</p>
+
+  <div class="notice">
+    <strong>Privacy:</strong> Photos are processed locally
+    in your browser. Nothing is uploaded to a server.
+    You decide whether to download a captured photo.
+  </div>
+
+  <div class="buttons">
+    <button id="download" disabled>Download Photo</button>
+    <a href="index.html">Back to EIONIX</a>
+  </div>
+</main>
+
+<script>
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const status = document.getElementById("status");
+
+const start = document.getElementById("start");
+const capture = document.getElementById("capture");
+const stop = document.getElementById("stop");
+const retake = document.getElementById("retake");
+const download = document.getElementById("download");
+
+let stream = null;
+
+start.addEventListener("click", async () => {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: false
+    });
+
+    video.srcObject = stream;
+    status.textContent = "Camera enabled. You are in control.";
+
+    capture.disabled = false;
+    stop.disabled = false;
+    start.disabled = true;
+  } catch (error) {
+    status.textContent =
+      "Camera access failed: " + error.message;
+  }
+});
+
+capture.addEventListener("click", () => {
+  if (!stream) return;
+
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+
+  canvas.getContext("2d").drawImage(
+    video, 0, 0, canvas.width, canvas.height
+  );
+
+  canvas.style.display = "block";
+  video.style.display = "none";
+
+  capture.disabled = true;
+  retake.disabled = false;
+  download.disabled = false;
+
+  status.textContent = "Photo captured locally.";
+});
+
+retake.addEventListener("click", () => {
+  canvas.style.display = "none";
+  video.style.display = "block";
+
+  capture.disabled = false;
+  retake.disabled = true;
+  download.disabled = true;
+
+  status.textContent = "Live camera preview restored.";
+});
+
+download.addEventListener("click", () => {
+  const link = document.createElement("a");
+  link.download = "eionix-camera-test.png";
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+});
+
+stop.addEventListener("click", () => {
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    stream = null;
+  }
+
+  video.srcObject = null;
+  video.style.display = "block";
+  canvas.style.display = "none";
+
+  capture.disabled = true;
+  stop.disabled = true;
+  start.disabled = false;
+  retake.disabled = true;
+  download.disabled = true;
+
+  status.textContent = "Camera stopped.";
+});
+</script>
+</body>
+</html>
+
